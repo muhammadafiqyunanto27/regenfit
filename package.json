@@ -1,0 +1,28 @@
+{
+  "name": "fitness-tracker",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "chart.js": "^4.5.0",
+    "idb": "^7.1.1",
+    "jspdf": "^3.0.1",
+    "jspdf-autotable": "^5.0.2",
+    "next": "13.4.12",
+    "react": "18.2.0",
+    "react-chartjs-2": "^5.3.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.3.2"
+  },
+  "main": "postcss.config.js",
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
