@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Komponen Input */
+@layer components {
+  .input {
+    @apply w-full p-2 mb-3 border rounded dark:bg-gray-800 dark:text-white;
+  }
+}
+
+/* Utility Kustom */
 @layer utilities {
   /* Animasi Fade Variasi */
   .animate-fade-in {
@@ -24,7 +32,7 @@
     animation: fade-in-right 0.8s ease-out both;
   }
 
-  /* Delay Utilities (mengikuti standar tailwind delay) */
+  /* Delay Animasi */
   .delay-75   { animation-delay: 75ms; }
   .delay-100  { animation-delay: 100ms; }
   .delay-150  { animation-delay: 150ms; }

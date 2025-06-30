@@ -1,12 +1,13 @@
-// pages/_app.js
 import '../styles/globals.css'
 import Layout from '../components/Layout'
 import { ThemeProvider } from '../context/ThemeContext'
+import { SessionProvider } from 'next-auth/react'
 import Head from 'next/head'
 
-function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
-    <ThemeProvider>
+    <>
+      {/* Global <head> metadata */}
       <Head>
         <title key="title">RegenFit</title>
         <meta
@@ -20,11 +21,14 @@ function MyApp({ Component, pageProps }) {
         <meta name="theme-color" content="#ffffff" />
       </Head>
 
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </ThemeProvider>
+      {/* Wrapper untuk session auth dan tema */}
+      <SessionProvider session={session}>
+        <ThemeProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
+      </SessionProvider>
+    </>
   )
 }
-
-export default MyApp

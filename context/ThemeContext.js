@@ -1,17 +1,18 @@
 'use client'
 
-import { createContext, useContext, useLayoutEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useLayoutEffect, useState } from 'react'
 
 const ThemeContext = createContext()
+
+// Gunakan hook yang aman untuk SSR (server-side rendering)
+const useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState('light')
 
-  // Gunakan useLayoutEffect agar DOM class langsung diset sebelum render
-  useLayoutEffect(() => {
-    // Hindari error saat rendering di server (Next.js SSR)
-    if (typeof window === 'undefined') return
-
+  // Ambil preferensi awal dari localStorage atau preferensi sistem
+  useIsomorphicLayoutEffect(() => {
     const stored = localStorage.getItem('theme')
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
 
@@ -22,9 +23,8 @@ export function ThemeProvider({ children }) {
     }
   }, [])
 
-  useLayoutEffect(() => {
-    if (typeof window === 'undefined') return
-
+  // Terapkan class theme ke elemen <html>
+  useIsomorphicLayoutEffect(() => {
     const root = document.documentElement
     root.classList.remove('light', 'dark')
     root.classList.add(theme)
@@ -41,4 +41,3 @@ export function ThemeProvider({ children }) {
 export function useTheme() {
   return useContext(ThemeContext)
 }
-  
