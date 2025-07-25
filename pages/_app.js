@@ -1,10 +1,9 @@
 import '../styles/globals.css'
 import Layout from '../components/Layout'
 import { ThemeProvider } from '../context/ThemeContext'
-import { SessionProvider } from 'next-auth/react'
 import Head from 'next/head'
 
-export default function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+export default function MyApp({ Component, pageProps }) {
   return (
     <>
       {/* Global <head> metadata */}
@@ -21,14 +20,12 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
         <meta name="theme-color" content="#ffffff" />
       </Head>
 
-      {/* Wrapper untuk session auth dan tema */}
-      <SessionProvider session={session}>
-        <ThemeProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </ThemeProvider>
-      </SessionProvider>
+      {/* Tanpa session provider */}
+      <ThemeProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeProvider>
     </>
   )
 }

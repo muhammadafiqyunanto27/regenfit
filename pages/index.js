@@ -1,10 +1,7 @@
 'use client'
 
-import { useSession } from 'next-auth/react'
-
 export default function Home() {
-  const { data: session } = useSession()
-  const user = session?.user
+  const user = { name: 'teman' } // Dummy user untuk pengganti session
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 via-white to-gray-50 dark:from-black dark:via-gray-900 dark:to-black text-gray-900 dark:text-gray-100 transition-all duration-300">
@@ -15,7 +12,7 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold leading-tight">
             Selamat Datang,{' '}
             <span className="text-black dark:text-white underline decoration-gray-300 dark:decoration-gray-700 underline-offset-4">
-              {user?.name || 'teman'}
+              {user.name}
             </span>
             !
           </h2>
