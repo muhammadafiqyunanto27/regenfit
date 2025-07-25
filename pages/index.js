@@ -1,7 +1,7 @@
 'use client'
 
 export default function Home() {
-  const user = { name: 'teman' } // Dummy user untuk pengganti session
+  const user = { name: 'Afiq' } // Dummy user untuk pengganti session
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 via-white to-gray-50 dark:from-black dark:via-gray-900 dark:to-black text-gray-900 dark:text-gray-100 transition-all duration-300">
